@@ -10,6 +10,9 @@
     :root{
       --bg:#0b0f14; --surface:#121923; --card:#0f1520; --text:#e6edf3; --muted:#99a3ad; --brand:#ff4d6d; --brand-2:#4cc9f0; --ring: #64ffda;
       --shadow: 0 10px 30px -10px rgba(0,0,0,.6);
+      --glass: color-mix(in oklab, var(--surface) 60%, transparent);
+      --glass-border: color-mix(in oklab, var(--text) 88%, transparent);
+      --glow: color-mix(in oklab, var(--brand-2) 35%, transparent);
     }
     :root.light{
       --bg:#f6f8fb; --surface:#ffffff; --card:#ffffff; --text:#0b0f14; --muted:#4b5563; --brand:#c81d77; --brand-2:#2563eb; --ring:#0ea5e9;
@@ -17,25 +20,29 @@
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0; font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; background:var(--bg); color:var(--text)}
+  body{margin:0; font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; background:var(--bg); color:var(--text); overflow-x:hidden}
     a{color:inherit;text-decoration:none}
     .container{max-width:1100px;margin:0 auto;padding:24px}
-    header.nav{position:sticky;top:0;z-index:10;backdrop-filter:saturate(180%) blur(12px);background:color-mix(in oklab, var(--bg) 80%, transparent);border-bottom:1px solid color-mix(in oklab, var(--text) 85%, transparent);}
+  /* Scroll progress bar */
+  .progress{position:fixed;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,var(--brand),var(--brand-2));transform-origin:0 50%;transform:scaleX(0);z-index:50;box-shadow:0 0 20px var(--glow)}
+  header.nav{position:sticky;top:0;z-index:40;backdrop-filter:saturate(180%) blur(12px);background:color-mix(in oklab, var(--bg) 80%, transparent);border-bottom:1px solid color-mix(in oklab, var(--text) 85%, transparent);}
     .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
     .brand{display:flex;align-items:center;gap:12px}
     .logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:var(--shadow)}
     .brand h1{font-size:18px;margin:0}
-    .nav-links{display:flex;gap:16px;flex-wrap:wrap}
-    .nav-links a{padding:8px 12px;border-radius:10px}
-    .nav-links a:hover{background:color-mix(in oklab, var(--text) 92%, transparent)}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:12px;border:1px solid color-mix(in oklab, var(--text) 85%, transparent);background:linear-gradient(180deg,color-mix(in oklab, var(--surface) 86%, transparent), color-mix(in oklab, var(--card) 92%, transparent));box-shadow:var(--shadow)}
-    .btn:hover{transform:translateY(-1px)}
+  .nav-links{display:flex;gap:16px;flex-wrap:wrap}
+  .nav-links a{position:relative;display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:10px}
+  .nav-links a::after{content:"";position:absolute;left:12px;right:12px;bottom:6px;height:2px;background:linear-gradient(90deg,var(--brand),var(--brand-2));transform:scaleX(0);transform-origin:0 50%;transition:transform .3s ease}
+  .nav-links a:hover{background:color-mix(in oklab, var(--text) 92%, transparent)}
+  .nav-links a.active::after{transform:scaleX(1)}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:12px;border:1px solid var(--glass-border);background:linear-gradient(180deg,color-mix(in oklab, var(--surface) 86%, transparent), color-mix(in oklab, var(--card) 92%, transparent));box-shadow:var(--shadow);backdrop-filter:saturate(160%) blur(10px);transition:transform .25s ease, box-shadow .25s ease, background .25s ease}
+  .btn:hover{transform:translateY(-2px)}
     .hero{padding:64px 0;display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
     .pill{display:inline-flex;gap:8px;align-items:center;border:1px solid color-mix(in oklab, var(--text) 85%, transparent);padding:6px 10px;border-radius:999px;color:var(--muted)}
     .hero h2{font-size:44px;line-height:1.1;margin:12px 0}
     .hero p{color:var(--muted);font-size:18px}
     .kbd{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;background:color-mix(in oklab, var(--text) 92%, transparent);padding:2px 6px;border-radius:6px;border:1px solid color-mix(in oklab, var(--text) 80%, transparent)}
-    .card{background:var(--card);border:1px solid color-mix(in oklab, var(--text) 88%, transparent);border-radius:16px;padding:20px;box-shadow:var(--shadow)}
+  .card{background:var(--glass);border:1px solid var(--glass-border);border-radius:18px;padding:20px;box-shadow:var(--shadow);backdrop-filter:saturate(160%) blur(12px)}
     .grid{display:grid;gap:16px}
     .grid.cols-3{grid-template-columns:repeat(3,1fr)}
     .grid.cols-2{grid-template-columns:repeat(2,1fr)}
@@ -53,13 +60,56 @@
     .kbd-row{display:flex;gap:10px;flex-wrap:wrap}
     .switch{cursor:pointer}
     .ring{box-shadow:0 0 0 3px color-mix(in oklab, var(--ring) 60%, transparent)}
-    .avatar{width:120px;height:120px;border-radius:999px;background:radial-gradient(85% 85% at 30% 30%, #fff3, transparent), linear-gradient(135deg,var(--brand-2),var(--brand));border:2px solid color-mix(in oklab, var(--text) 85%, transparent)}
+  .avatar{width:120px;height:120px;border-radius:999px;background:radial-gradient(85% 85% at 30% 30%, #fff3, transparent), linear-gradient(135deg,var(--brand-2),var(--brand));border:2px solid color-mix(in oklab, var(--text) 85%, transparent);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
     .social a{padding:10px 12px;border-radius:10px;border:1px solid color-mix(in oklab, var(--text) 85%, transparent)}
     /* anchor offset */
     .anchor{position:relative;top:-70px;visibility:hidden}
+
+    /* Background layers + blobs */
+    .scene{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+    .layer{position:absolute;inset:auto;will-change:transform;filter:saturate(120%)}
+    .layer .blob{position:absolute;width:40vmax;height:40vmax;border-radius:50%;
+      background:radial-gradient(60% 60% at 40% 40%, color-mix(in oklab, var(--brand-2) 55%, transparent), transparent 70%),
+                  radial-gradient(60% 60% at 60% 60%, color-mix(in oklab, var(--brand) 55%, transparent), transparent 70%);
+      mix-blend-mode:screen;opacity:.22;filter:blur(20px)
+    }
+    .layer.l1 .blob{top:-10vmax;left:-8vmax}
+    .layer.l2 .blob{bottom:-12vmax;right:-10vmax}
+    .layer.l3 .blob{top:20vh;right:-15vmax}
+
+    /* Glass/goo shapes floating */
+    .glass-float{position:absolute;width:320px;max-width:42vw;aspect-ratio:1.2;border-radius:24px;background:var(--glass);
+      border:1px solid var(--glass-border);backdrop-filter:blur(16px) saturate(160%);
+      box-shadow:0 10px 40px -10px #0006, 0 0 0 1px color-mix(in oklab, var(--text) 92%, transparent) inset;overflow:hidden}
+    .glass-float::before{content:"";position:absolute;inset:-30%;background:conic-gradient(from 0deg at 50% 50%, transparent 0 60%, color-mix(in oklab, var(--glow) 70%, transparent) 70% 100%);
+      animation:spin 18s linear infinite;filter:blur(20px);opacity:.45}
+    .glass-float .shine{position:absolute;inset:0;background:radial-gradient(120% 60% at -10% -20%, #fff2 0, transparent 40%), radial-gradient(120% 60% at 110% 120%, #fff1 0, transparent 50%)}
+    .float1{top:14vh;left:4vw}
+    .float2{bottom:10vh;right:6vw}
+
+    @keyframes spin{to{transform:rotate(1turn)}}
+    @media (prefers-reduced-motion: reduce){
+      *{transition:none !important;animation:none !important}
+    }
+
+    /* Reveal on scroll */
+    [data-reveal]{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease}
+    [data-reveal].in{opacity:1;transform:none}
+
+    /* Magnetic button helper */
+    .magnetic{--tx:0px;--ty:0px;transform:translate(var(--tx), var(--ty));transition:transform .25s ease}
   </style>
 </head>
 <body>
+  <div class="progress" aria-hidden="true"></div>
+  <!-- Parallax scene background -->
+  <div class="scene" aria-hidden="true">
+    <div class="layer l1" data-depth="0.05"><div class="blob"></div></div>
+    <div class="layer l2" data-depth="0.12"><div class="blob"></div></div>
+    <div class="layer l3" data-depth="0.2"><div class="blob"></div></div>
+    <div class="glass-float float1" data-depth="0.08"><div class="shine"></div></div>
+    <div class="glass-float float2" data-depth="0.16"><div class="shine"></div></div>
+  </div>
   <header class="nav">
     <div class="container nav-inner">
       <div class="brand">
@@ -234,8 +284,9 @@
           <p class="muted">Courses: Distributed Systems, Reliable Systems (Verus/Rust), Algorithms, Databases, Data Science</p>
         </div>
         <div class="card">
-          <strong>REVA University</strong>
-          <p>B.Tech • (Add details)</p>
+          <strong>Sathyabama Institute of Science and Technology</strong>
+          <p>B.Tech • 2020 — 2024</p>
+          <p class="muted">Courses: Data Structures, Algorithms, Database Management, Operating Systems, Computer Networks</p>
         </div>
       </div>
     </section>
@@ -275,6 +326,115 @@
 
     // Keyboard shortcut: press "t" to toggle theme
     window.addEventListener('keydown',(e)=>{ if(e.key==='t' || e.key==='T'){ themeToggle.click(); }});
+
+    // Parallax scene & progress bar & reveals
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const scene = document.querySelector('.scene');
+    const layers = scene ? Array.from(scene.querySelectorAll('[data-depth]')) : [];
+    const progress = document.querySelector('.progress');
+
+    // Scroll progress
+    const updateProgress = () => {
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - doc.clientHeight;
+      const p = max > 0 ? (doc.scrollTop / max) : 0;
+      if(progress){ progress.style.transform = `scaleX(${p})`; }
+    };
+    document.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    // Parallax on scroll and subtle mouse parallax
+    const state = { sy: 0, mx: 0, my: 0 };
+    const renderLayers = () => {
+      layers.forEach(el=>{
+        const d = parseFloat(el.getAttribute('data-depth')||'0');
+        const x = state.mx * d * 12;
+        const y = -state.sy * d + state.my * d * 12;
+        el.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      });
+    };
+    let ticking = false;
+    const onScroll = () => {
+      if(ticking || prefersReduced) return; ticking = true;
+      requestAnimationFrame(()=>{
+        state.sy = window.scrollY;
+        renderLayers();
+        ticking = false;
+      });
+    };
+    document.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    window.addEventListener('mousemove', (e)=>{
+      if(prefersReduced) return;
+      const { innerWidth:w, innerHeight:h } = window;
+      state.mx = (e.clientX / w - .5);
+      state.my = (e.clientY / h - .5);
+      renderLayers();
+    });
+
+    // Reveal on scroll
+    const revealEls = Array.from(document.querySelectorAll('section, .card, .project'));
+    revealEls.forEach(el=> el.setAttribute('data-reveal',''));
+    if(!prefersReduced && 'IntersectionObserver' in window){
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(({isIntersecting, target})=>{
+          if(isIntersecting){ target.classList.add('in'); io.unobserve(target); }
+        });
+      }, { rootMargin: '0px 0px -10% 0px', threshold: .1 });
+      revealEls.forEach(el=> io.observe(el));
+    } else {
+      // Fallback: make them visible immediately
+      revealEls.forEach(el=> el.classList.add('in'));
+    }
+
+    // Magnetic buttons
+    const magnets = Array.from(document.querySelectorAll('.btn'));
+    magnets.forEach(btn=>{
+      btn.classList.add('magnetic');
+      btn.addEventListener('mousemove', (e)=>{
+        if(prefersReduced) return;
+        const rect = btn.getBoundingClientRect();
+        const dx = (e.clientX - rect.left - rect.width/2) / (rect.width/2);
+        const dy = (e.clientY - rect.top - rect.height/2) / (rect.height/2);
+        btn.style.setProperty('--tx', `${dx*6}px`);
+        btn.style.setProperty('--ty', `${dy*6}px`);
+      });
+      btn.addEventListener('mouseleave', ()=>{
+        btn.style.setProperty('--tx', '0px');
+        btn.style.setProperty('--ty', '0px');
+      });
+    });
+
+    // Avatar tilt
+    const avatar = document.querySelector('.avatar');
+    if(avatar){
+      avatar.addEventListener('mousemove', (e)=>{
+        if(prefersReduced) return;
+        const r = avatar.getBoundingClientRect();
+        const rx = (e.clientY - r.top - r.height/2) / r.height * -8;
+        const ry = (e.clientX - r.left - r.width/2) / r.width * 8;
+        avatar.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
+      });
+      avatar.addEventListener('mouseleave', ()=>{ avatar.style.transform = 'none'; });
+    }
+
+    // Active nav link highlighting
+    const navLinks = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+    const targets = navLinks
+      .map(a => document.querySelector(a.getAttribute('href')))
+      .filter(Boolean);
+    if('IntersectionObserver' in window){
+      const highlight = (id) => {
+        navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${id}`));
+      };
+      const obs = new IntersectionObserver((entries)=>{
+        entries.forEach(({target, isIntersecting})=>{
+          if(isIntersecting){ highlight(target.id); }
+        });
+      }, { rootMargin: '-40% 0% -50% 0%', threshold: .01 });
+      targets.forEach(el=> obs.observe(el));
+    }
   </script>
 
   <!-- JSON-LD for a bit of SEO -->
@@ -288,7 +448,7 @@
     "affiliation": {"@type":"CollegeOrUniversity","name":"Stony Brook University"},
     "sameAs": [
       "https://github.com/your-username",
-      "https://www.linkedin.com/in/your-link"
+      "https://www.linkedin.com/in/saikir"
     ]
   }
   </script>
