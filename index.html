@@ -1,39 +1,296 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Saikiran Reddy J - Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Saikiran Reddy J — Portfolio</title>
+  <meta name="description" content="Portfolio of Saikiran Reddy J — M.S. CS at Stony Brook University. Distributed Systems • Rust/Verus • DevOps • Data Analytics." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>💻</text></svg>">
   <style>
-    body { font-family: Arial, sans-serif; margin: 20px; background: #f9f9f9; }
-    header { text-align: center; padding: 20px; }
-    h1 { color: #d63447; }
-    section { margin: 40px 0; }
-    .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px; }
+    :root{
+      --bg:#0b0f14; --surface:#121923; --card:#0f1520; --text:#e6edf3; --muted:#99a3ad; --brand:#ff4d6d; --brand-2:#4cc9f0; --ring: #64ffda;
+      --shadow: 0 10px 30px -10px rgba(0,0,0,.6);
+    }
+    :root.light{
+      --bg:#f6f8fb; --surface:#ffffff; --card:#ffffff; --text:#0b0f14; --muted:#4b5563; --brand:#c81d77; --brand-2:#2563eb; --ring:#0ea5e9;
+      --shadow: 0 10px 30px -12px rgba(2,6,23,.2);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0; font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; background:var(--bg); color:var(--text)}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    header.nav{position:sticky;top:0;z-index:10;backdrop-filter:saturate(180%) blur(12px);background:color-mix(in oklab, var(--bg) 80%, transparent);border-bottom:1px solid color-mix(in oklab, var(--text) 85%, transparent);}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:var(--shadow)}
+    .brand h1{font-size:18px;margin:0}
+    .nav-links{display:flex;gap:16px;flex-wrap:wrap}
+    .nav-links a{padding:8px 12px;border-radius:10px}
+    .nav-links a:hover{background:color-mix(in oklab, var(--text) 92%, transparent)}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:12px;border:1px solid color-mix(in oklab, var(--text) 85%, transparent);background:linear-gradient(180deg,color-mix(in oklab, var(--surface) 86%, transparent), color-mix(in oklab, var(--card) 92%, transparent));box-shadow:var(--shadow)}
+    .btn:hover{transform:translateY(-1px)}
+    .hero{padding:64px 0;display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
+    .pill{display:inline-flex;gap:8px;align-items:center;border:1px solid color-mix(in oklab, var(--text) 85%, transparent);padding:6px 10px;border-radius:999px;color:var(--muted)}
+    .hero h2{font-size:44px;line-height:1.1;margin:12px 0}
+    .hero p{color:var(--muted);font-size:18px}
+    .kbd{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;background:color-mix(in oklab, var(--text) 92%, transparent);padding:2px 6px;border-radius:6px;border:1px solid color-mix(in oklab, var(--text) 80%, transparent)}
+    .card{background:var(--card);border:1px solid color-mix(in oklab, var(--text) 88%, transparent);border-radius:16px;padding:20px;box-shadow:var(--shadow)}
+    .grid{display:grid;gap:16px}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+    @media (max-width:900px){.hero{grid-template-columns:1fr}.grid.cols-3{grid-template-columns:1fr}.grid.cols-2{grid-template-columns:1fr}}
+    section{padding:40px 0}
+    section h3{font-size:24px;margin:0 0 16px}
+    .tag{display:inline-block;padding:4px 10px;border-radius:999px;border:1px solid color-mix(in oklab, var(--text) 85%, transparent);color:var(--muted);margin:4px 6px 0 0}
+    .row{display:flex;gap:12px;flex-wrap:wrap}
+    .project .title{display:flex;justify-content:space-between;gap:10px;align-items:center}
+    .project a.more{font-size:14px;color:var(--brand-2)}
+    .timeline{display:grid;gap:14px}
+    .tl{display:grid;gap:6px;padding:14px;border-left:3px solid var(--brand-2);padding-left:14px}
+    footer{padding:40px 0;color:var(--muted)}
+    .muted{color:var(--muted)}
+    .kbd-row{display:flex;gap:10px;flex-wrap:wrap}
+    .switch{cursor:pointer}
+    .ring{box-shadow:0 0 0 3px color-mix(in oklab, var(--ring) 60%, transparent)}
+    .avatar{width:120px;height:120px;border-radius:999px;background:radial-gradient(85% 85% at 30% 30%, #fff3, transparent), linear-gradient(135deg,var(--brand-2),var(--brand));border:2px solid color-mix(in oklab, var(--text) 85%, transparent)}
+    .social a{padding:10px 12px;border-radius:10px;border:1px solid color-mix(in oklab, var(--text) 85%, transparent)}
+    /* anchor offset */
+    .anchor{position:relative;top:-70px;visibility:hidden}
   </style>
 </head>
 <body>
-  <header>
-    <h1>👋 Hi, I'm Saikiran Reddy J</h1>
-    <p>M.S. Computer Science @ Stony Brook | Distributed Systems & Verification Enthusiast</p>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <h1>Saikiran Reddy J</h1>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+        <button id="themeToggle" class="btn switch" aria-label="Toggle theme">🌗</button>
+      </nav>
+    </div>
   </header>
 
-  <section>
-    <h2>💻 Projects</h2>
-    <div class="card">
-      <h3>Fault-Tolerant Banking System</h3>
-      <p>Implemented sharding, Paxos, and 2PC to ensure consistency.</p>
-    </div>
-    <div class="card">
-      <h3>Verified Multi-Paxos in Rust/Verus</h3>
-      <p>Formally verified safety and liveness properties of Multi-Paxos.</p>
-    </div>
-  </section>
+  <main class="container">
+    <section class="hero">
+      <div>
+        <span class="pill">Open to Internships • Summer 2026</span>
+        <h2>Building reliable distributed systems — with a sprinkle of formal verification.</h2>
+        <p>M.S. CS @ Stony Brook. I work across <span class="kbd">Rust</span>, <span class="kbd">Go</span>, and <span class="kbd">Python</span> to design systems with provable guarantees. Previously: dashboards & data pipelines; now: consensus, sharding, and verified controllers.</p>
+        <div class="row" style="margin-top:16px">
+          <a class="btn ring" href="#projects">View Projects</a>
+          <a class="btn" href="resume.pdf" download>Download Résumé</a>
+          <div class="kbd-row muted" aria-label="quick meta">
+            <span class="kbd">Rust</span>
+            <span class="kbd">Verus</span>
+            <span class="kbd">K8s</span>
+            <span class="kbd">Terraform</span>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:center">
+        <div class="avatar" aria-label="Avatar placeholder"></div>
+      </div>
+    </section>
 
-  <section>
-    <h2>📫 Contact</h2>
-    <p>Email: saikiran@example.com</p>
-    <p><a href="https://www.linkedin.com/in/saikiranreddyj">LinkedIn</a> | <a href="https://github.com/saikiranreddy2710">GitHub</a></p>
-  </section>
+    <span id="about" class="anchor"></span>
+    <section>
+      <h3>About</h3>
+      <div class="card">
+        <p>I'm Saikiran, a graduate student focused on distributed systems and verification. I enjoy building resilient clusters, proving safety properties, and turning research ideas into real software. I also have hands‑on experience in data analytics and DevOps workflows.</p>
+        <div class="row social" style="margin-top:10px">
+          <a href="mailto:you@example.com">📧 Email</a>
+          <a href="https://github.com/your-username" target="_blank" rel="noopener">🐙 GitHub</a>
+          <a href="https://www.linkedin.com/in/your-link" target="_blank" rel="noopener">🔗 LinkedIn</a>
+          <a href="https://twitter.com/your-handle" target="_blank" rel="noopener">𝕏</a>
+        </div>
+      </div>
+    </section>
+
+    <span id="skills" class="anchor"></span>
+    <section>
+      <h3>Skills</h3>
+      <div class="grid cols-3">
+        <div class="card">
+          <strong>Systems & Languages</strong>
+          <div>
+            <span class="tag">Rust</span>
+            <span class="tag">Go</span>
+            <span class="tag">Python</span>
+            <span class="tag">C/C++</span>
+            <span class="tag">Bash</span>
+          </div>
+        </div>
+        <div class="card">
+          <strong>Distributed Systems</strong>
+          <div>
+            <span class="tag">Paxos / Raft</span>
+            <span class="tag">2PC</span>
+            <span class="tag">Sharding</span>
+            <span class="tag">Replication</span>
+            <span class="tag">Fault Tolerance</span>
+          </div>
+        </div>
+        <div class="card">
+          <strong>Infra & Data</strong>
+          <div>
+            <span class="tag">Kubernetes</span>
+            <span class="tag">Terraform</span>
+            <span class="tag">Docker</span>
+            <span class="tag">CI/CD</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Tableau/Power BI</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <span id="projects" class="anchor"></span>
+    <section>
+      <h3>Projects</h3>
+      <div class="grid cols-2">
+        <article class="card project">
+          <div class="title">
+            <strong>Fault‑Tolerant Banking (Sharding + 2PC + Paxos)</strong>
+            <a class="more" href="#" target="_blank" rel="noopener">Code ↗</a>
+          </div>
+          <p>Designed a multi‑shard banking system. Intra‑shard consensus via Paxos; cross‑shard atomicity via 2PC. Leader election, replication, and crash recovery ensure safety/liveness.</p>
+          <div class="row">
+            <span class="tag">Rust</span>
+            <span class="tag">gRPC</span>
+            <span class="tag">Verus (proofs)</span>
+          </div>
+        </article>
+        <article class="card project">
+          <div class="title">
+            <strong>Verified Multi‑Paxos in Rust/Verus</strong>
+            <a class="more" href="#" target="_blank" rel="noopener">Paper/Code ↗</a>
+          </div>
+          <p>Mechanized safety proofs and partial liveness arguments for Multi‑Paxos. Modular invariants, ghost state, and model‑checked scenarios.</p>
+          <div class="row">
+            <span class="tag">Rust</span>
+            <span class="tag">Verus</span>
+            <span class="tag">TLA+</span>
+          </div>
+        </article>
+        <article class="card project">
+          <div class="title">
+            <strong>Kubernetes Controller (Verified invariants)</strong>
+            <a class="more" href="#" target="_blank" rel="noopener">Repo ↗</a>
+          </div>
+          <p>Prototype controller with formally stated invariants to prevent unsafe state transitions in cluster management lifecycle.</p>
+          <div class="row">
+            <span class="tag">Go</span>
+            <span class="tag">K8s</span>
+            <span class="tag">Controller‑Runtime</span>
+          </div>
+        </article>
+        <article class="card project">
+          <div class="title">
+            <strong>Data Analytics Dashboards</strong>
+            <a class="more" href="#" target="_blank" rel="noopener">Gallery ↗</a>
+          </div>
+          <p>50+ dashboards in Tableau/Power BI: sales insights, funnel analysis, anomaly detection, and KPI storytelling.</p>
+          <div class="row">
+            <span class="tag">Tableau</span>
+            <span class="tag">Power BI</span>
+            <span class="tag">SQL</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <span id="experience" class="anchor"></span>
+    <section>
+      <h3>Experience</h3>
+      <div class="timeline">
+        <div class="card tl">
+          <strong>Graduate Research — Stony Brook University</strong>
+          <span class="muted">2025 — Present</span>
+          <p>Distributed systems + verification: Multi‑Paxos, 2PC, verified controllers.</p>
+        </div>
+        <div class="card tl">
+          <strong>Data Analyst / Engineer — Excelr Solutions</strong>
+          <span class="muted">2022 — 2023</span>
+          <p>Built analytics pipelines and dashboards; collaborated with sales/ops to drive decisions.</p>
+        </div>
+      </div>
+    </section>
+
+    <span id="education" class="anchor"></span>
+    <section>
+      <h3>Education</h3>
+      <div class="grid cols-2">
+        <div class="card">
+          <strong>Stony Brook University</strong>
+          <p>M.S. in Computer Science • 2024 — 2026</p>
+          <p class="muted">Courses: Distributed Systems, Reliable Systems (Verus/Rust), Algorithms, Databases, Data Science</p>
+        </div>
+        <div class="card">
+          <strong>REVA University</strong>
+          <p>B.Tech • (Add details)</p>
+        </div>
+      </div>
+    </section>
+
+    <span id="contact" class="anchor"></span>
+    <section>
+      <h3>Contact</h3>
+      <div class="card">
+        <p>Want to collaborate or chat? Reach out via email or LinkedIn.</p>
+        <div class="row">
+          <a class="btn ring" href="mailto:you@example.com">Email Me</a>
+          <a class="btn" href="https://www.linkedin.com/in/your-link" target="_blank" rel="noopener">Connect on LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container" style="padding:0">
+        <p class="muted">© <span id="year"></span> Saikiran Reddy J • Built with GitHub Pages</p>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Theme toggle (persist to localStorage)
+    const themeToggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    if(saved === 'light'){ root.classList.add('light'); }
+    themeToggle?.addEventListener('click',()=>{
+      root.classList.toggle('light');
+      localStorage.setItem('theme', root.classList.contains('light') ? 'light' : 'dark');
+    });
+
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Keyboard shortcut: press "t" to toggle theme
+    window.addEventListener('keydown',(e)=>{ if(e.key==='t' || e.key==='T'){ themeToggle.click(); }});
+  </script>
+
+  <!-- JSON-LD for a bit of SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Saikiran Reddy J",
+    "url": "https://your-username.github.io/",
+    "jobTitle": "Graduate Student — Computer Science",
+    "affiliation": {"@type":"CollegeOrUniversity","name":"Stony Brook University"},
+    "sameAs": [
+      "https://github.com/your-username",
+      "https://www.linkedin.com/in/your-link"
+    ]
+  }
+  </script>
 </body>
 </html>
