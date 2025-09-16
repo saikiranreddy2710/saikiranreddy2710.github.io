@@ -1,238 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Saikiran Reddy J — Portfolio</title>
-  <meta name="description" content="Portfolio of Saikiran Reddy J — M.S. CS at Stony Brook University. Distributed Systems • Rust/Verus • DevOps • Data Analytics." />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>💻</text></svg>'>
-  <link rel="stylesheet" href="assets/styles.css?v=2" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saikiran Reddy J - Portfolio</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background: #f9f9f9; }
+    header { text-align: center; padding: 20px; }
+    h1 { color: #d63447; }
+    section { margin: 40px 0; }
+    .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px; }
+  </style>
 </head>
 <body>
-  <div class="progress" aria-hidden="true"></div>
-  <!-- Parallax scene background -->
-  <div class="scene" aria-hidden="true">
-    <div class="layer l1" data-depth="0.05"><div class="blob"></div></div>
-    <div class="layer l2" data-depth="0.12"><div class="blob"></div></div>
-    <div class="layer l3" data-depth="0.2"><div class="blob"></div></div>
-    <div class="glass-float float1" data-depth="0.08"><div class="shine"></div></div>
-    <div class="glass-float float2" data-depth="0.16"><div class="shine"></div></div>
-  </div>
-  <header class="nav">
-    <div class="container nav-inner">
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <h1>Saikiran Reddy J</h1>
-      </div>
-      <nav class="nav-links">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
-        <button id="themeToggle" class="btn switch" aria-label="Toggle theme">🌗</button>
-      </nav>
-    </div>
+  <header>
+    <h1>👋 Hi, I'm Saikiran Reddy J</h1>
+    <p>M.S. Computer Science @ Stony Brook | Distributed Systems & Verification Enthusiast</p>
   </header>
 
-  <main class="container">
-    <section class="hero">
-      <div>
-        <span class="pill">Open to Internships • Summer 2026</span>
-        <h2>Building reliable distributed systems — with a sprinkle of formal verification.</h2>
-        <p>M.S. CS @ Stony Brook. I work across <span class="kbd">Rust</span>, <span class="kbd">Go</span>, and <span class="kbd">Python</span> to design systems with provable guarantees. Previously: dashboards & data pipelines; now: consensus, sharding, and verified controllers.</p>
-        <div class="row" style="margin-top:16px">
-          <a class="btn ring" href="#projects">View Projects</a>
-          <a class="btn" href="resume.pdf" download>Download Résumé</a>
-          <div class="kbd-row muted" aria-label="quick meta">
-            <span class="kbd">Rust</span>
-            <span class="kbd">Verus</span>
-            <span class="kbd">K8s</span>
-            <span class="kbd">Terraform</span>
-          </div>
-        </div>
-      </div>
-      <div style="display:flex;justify-content:center">
-        <div class="avatar" aria-label="Avatar placeholder"></div>
-      </div>
-    </section>
+  <section>
+    <h2>💻 Projects</h2>
+    <div class="card">
+      <h3>Fault-Tolerant Banking System</h3>
+      <p>Implemented sharding, Paxos, and 2PC to ensure consistency.</p>
+    </div>
+    <div class="card">
+      <h3>Verified Multi-Paxos in Rust/Verus</h3>
+      <p>Formally verified safety and liveness properties of Multi-Paxos.</p>
+    </div>
+  </section>
 
-    <span id="about" class="anchor"></span>
-    <section>
-      <h3>About</h3>
-      <div class="card">
-        <p>I'm Saikiran, a graduate student focused on distributed systems and verification. I enjoy building resilient clusters, proving safety properties, and turning research ideas into real software. I also have hands‑on experience in data analytics and DevOps workflows.</p>
-        <div class="row social" style="margin-top:10px">
-          <a href="mailto:you@example.com">📧 Email</a>
-          <a href="https://github.com/your-username" target="_blank" rel="noopener">🐙 GitHub</a>
-          <a href="https://www.linkedin.com/in/your-link" target="_blank" rel="noopener">🔗 LinkedIn</a>
-          <a href="https://twitter.com/your-handle" target="_blank" rel="noopener">𝕏</a>
-        </div>
-      </div>
-    </section>
-
-    <span id="skills" class="anchor"></span>
-    <section>
-      <h3>Skills</h3>
-      <div class="grid cols-3">
-        <div class="card">
-          <strong>Systems & Languages</strong>
-          <div>
-            <span class="tag">Rust</span>
-            <span class="tag">Go</span>
-            <span class="tag">Python</span>
-            <span class="tag">C/C++</span>
-            <span class="tag">Bash</span>
-          </div>
-        </div>
-        <div class="card">
-          <strong>Distributed Systems</strong>
-          <div>
-            <span class="tag">Paxos / Raft</span>
-            <span class="tag">2PC</span>
-            <span class="tag">Sharding</span>
-            <span class="tag">Replication</span>
-            <span class="tag">Fault Tolerance</span>
-          </div>
-        </div>
-        <div class="card">
-          <strong>Infra & Data</strong>
-          <div>
-            <span class="tag">Kubernetes</span>
-            <span class="tag">Terraform</span>
-            <span class="tag">Docker</span>
-            <span class="tag">CI/CD</span>
-            <span class="tag">SQL</span>
-            <span class="tag">Tableau/Power BI</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <span id="projects" class="anchor"></span>
-    <section>
-      <h3>Projects</h3>
-      <div class="grid cols-2">
-        <article class="card project">
-          <div class="title">
-            <strong>Fault‑Tolerant Banking (Sharding + 2PC + Paxos)</strong>
-            <a class="more" href="#" target="_blank" rel="noopener">Code ↗</a>
-          </div>
-          <p>Designed a multi‑shard banking system. Intra‑shard consensus via Paxos; cross‑shard atomicity via 2PC. Leader election, replication, and crash recovery ensure safety/liveness.</p>
-          <div class="row">
-            <span class="tag">Rust</span>
-            <span class="tag">gRPC</span>
-            <span class="tag">Verus (proofs)</span>
-          </div>
-        </article>
-        <article class="card project">
-          <div class="title">
-            <strong>Verified Multi‑Paxos in Rust/Verus</strong>
-            <a class="more" href="#" target="_blank" rel="noopener">Paper/Code ↗</a>
-          </div>
-          <p>Mechanized safety proofs and partial liveness arguments for Multi‑Paxos. Modular invariants, ghost state, and model‑checked scenarios.</p>
-          <div class="row">
-            <span class="tag">Rust</span>
-            <span class="tag">Verus</span>
-            <span class="tag">TLA+</span>
-          </div>
-        </article>
-        <article class="card project">
-          <div class="title">
-            <strong>Kubernetes Controller (Verified invariants)</strong>
-            <a class="more" href="#" target="_blank" rel="noopener">Repo ↗</a>
-          </div>
-          <p>Prototype controller with formally stated invariants to prevent unsafe state transitions in cluster management lifecycle.</p>
-          <div class="row">
-            <span class="tag">Go</span>
-            <span class="tag">K8s</span>
-            <span class="tag">Controller‑Runtime</span>
-          </div>
-        </article>
-        <article class="card project">
-          <div class="title">
-            <strong>Data Analytics Dashboards</strong>
-            <a class="more" href="#" target="_blank" rel="noopener">Gallery ↗</a>
-          </div>
-          <p>50+ dashboards in Tableau/Power BI: sales insights, funnel analysis, anomaly detection, and KPI storytelling.</p>
-          <div class="row">
-            <span class="tag">Tableau</span>
-            <span class="tag">Power BI</span>
-            <span class="tag">SQL</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <span id="experience" class="anchor"></span>
-    <section>
-      <h3>Experience</h3>
-      <div class="timeline">
-        <div class="card tl">
-          <strong>Graduate Research — Stony Brook University</strong>
-          <span class="muted">2025 — Present</span>
-          <p>Distributed systems + verification: Multi‑Paxos, 2PC, verified controllers.</p>
-        </div>
-        <div class="card tl">
-          <strong>Data Analyst / Engineer — Excelr Solutions</strong>
-          <span class="muted">2022 — 2023</span>
-          <p>Built analytics pipelines and dashboards; collaborated with sales/ops to drive decisions.</p>
-        </div>
-      </div>
-    </section>
-
-    <span id="education" class="anchor"></span>
-    <section>
-      <h3>Education</h3>
-      <div class="grid cols-2">
-        <div class="card">
-          <strong>Stony Brook University</strong>
-          <p>M.S. in Computer Science • 2024 — 2026</p>
-          <p class="muted">Courses: Distributed Systems, Reliable Systems (Verus/Rust), Algorithms, Databases, Data Science</p>
-        </div>
-        <div class="card">
-          <strong>Sathyabama Institute of Science and Technology</strong>
-          <p>B.Tech • 2020 — 2024</p>
-          <p class="muted">Courses: Data Structures, Algorithms, Database Management, Operating Systems, Computer Networks</p>
-        </div>
-      </div>
-    </section>
-
-    <span id="contact" class="anchor"></span>
-    <section>
-      <h3>Contact</h3>
-      <div class="card">
-        <p>Want to collaborate or chat? Reach out via email or LinkedIn.</p>
-        <div class="row">
-          <a class="btn ring" href="mailto:you@example.com">Email Me</a>
-          <a class="btn" href="https://www.linkedin.com/in/your-link" target="_blank" rel="noopener">Connect on LinkedIn</a>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <div class="container" style="padding:0">
-        <p class="muted">© <span id="year"></span> Saikiran Reddy J • Built with GitHub Pages</p>
-      </div>
-    </footer>
-  </main>
-  <script src="assets/app.js?v=2" defer></script>
-
-  <!-- JSON-LD for a bit of SEO -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Saikiran Reddy J",
-    "url": "https://your-username.github.io/",
-    "jobTitle": "Graduate Student — Computer Science",
-    "affiliation": {"@type":"CollegeOrUniversity","name":"Stony Brook University"},
-    "sameAs": [
-      "https://github.com/saikiranreddy2710",
-      "https://www.linkedin.com/in/saikiranreddyj"
-    ]
-  }
-  </script>
+  <section>
+    <h2>📫 Contact</h2>
+    <p>Email: saikiranreddy2710@gmail.com</p>
+    <p><a href="https://www.linkedin.com/in/saikiranreddyj">LinkedIn</a> | <a href="https://github.com/saikiranreddy2710">GitHub</a></p>
+  </section>
 </body>
 </html>
