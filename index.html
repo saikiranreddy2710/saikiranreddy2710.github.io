@@ -4,36 +4,239 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Saikiran Reddy J - Portfolio</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 20px; background: #f9f9f9; }
-    header { text-align: center; padding: 20px; }
-    h1 { color: #d63447; }
-    section { margin: 40px 0; }
-    .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px; }
-  </style>
+  <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
-  <header>
-    <h1>👋 Hi, I'm Saikiran Reddy J</h1>
-    <p>M.S. Computer Science @ Stony Brook | Distributed Systems & Verification Enthusiast</p>
+  <!-- Scroll progress indicator -->
+  <div class="progress"></div>
+
+  <!-- Ambient background scene with floating blobs -->
+  <div class="scene">
+    <div class="layer l1" data-depth="0.15">
+      <div class="blob"></div>
+    </div>
+    <div class="layer l2" data-depth="0.25">
+      <div class="blob"></div>
+    </div>
+    <div class="layer l3" data-depth="0.1">
+      <div class="blob"></div>
+    </div>
+  </div>
+
+  <!-- Floating glass shapes for depth -->
+  <div class="glass-float float1">
+    <div class="shine"></div>
+  </div>
+  <div class="glass-float float2">
+    <div class="shine"></div>
+  </div>
+
+  <!-- Sticky Navigation -->
+  <header class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <div class="brand">
+          <div class="logo"></div>
+          <h1>Saikiran Reddy J</h1>
+        </div>
+        <nav class="nav-links">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <button id="themeToggle" class="switch btn" aria-label="Toggle theme">
+          <span>🌙</span>
+        </button>
+      </div>
+    </div>
   </header>
 
-  <section>
-    <h2>💻 Projects</h2>
-    <div class="card">
-      <h3>Fault-Tolerant Banking System</h3>
-      <p>Implemented sharding, Paxos, and 2PC to ensure consistency.</p>
-    </div>
-    <div class="card">
-      <h3>Verified Multi-Paxos in Rust/Verus</h3>
-      <p>Formally verified safety and liveness properties of Multi-Paxos.</p>
-    </div>
-  </section>
+  <div class="container">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div>
+        <div class="pill">
+          <span>👋</span>
+          <span>Welcome to my portfolio</span>
+        </div>
+        <h2>Hi, I'm Saikiran Reddy J</h2>
+        <p>M.S. Computer Science @ Stony Brook University | Passionate about Distributed Systems, Formal Verification & Building Resilient Software</p>
+        <div class="row" style="margin-top: 24px;">
+          <a href="#projects" class="btn">
+            <span>View Projects</span>
+            <span>↓</span>
+          </a>
+          <a href="#contact" class="btn">
+            <span>Get in Touch</span>
+            <span>→</span>
+          </a>
+        </div>
+        <div class="kbd-row" style="margin-top: 16px;">
+          <span class="muted" style="font-size: 14px;">Quick tip: Press <span class="kbd">t</span> to toggle theme</span>
+        </div>
+      </div>
+      <div style="display: flex; justify-content: center; align-items: center;">
+        <div class="avatar"></div>
+      </div>
+    </section>
 
-  <section>
-    <h2>📫 Contact</h2>
-    <p>Email: saikiranreddy2710@gmail.com</p>
-    <p><a href="https://www.linkedin.com/in/saikiranreddyj">LinkedIn</a> | <a href="https://github.com/saikiranreddy2710">GitHub</a></p>
-  </section>
+    <!-- About Section -->
+    <span class="anchor" id="about"></span>
+    <section class="section">
+      <h3>About Me</h3>
+      <div class="card">
+        <p>I'm a Master's student in Computer Science at Stony Brook University with a deep passion for distributed systems and formal verification. My work focuses on building fault-tolerant, reliable systems that can handle real-world complexity while maintaining strong safety guarantees.</p>
+        <p style="margin-top: 12px;">I enjoy tackling challenging problems at the intersection of theory and practice, from implementing consensus algorithms like Paxos to formally verifying their correctness using tools like Verus.</p>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <span class="anchor" id="projects"></span>
+    <section class="section">
+      <h3>💻 Featured Projects</h3>
+      <div class="grid cols-2">
+        <div class="card project">
+          <div class="title">
+            <h4>Fault-Tolerant Banking System</h4>
+          </div>
+          <p class="muted">A distributed banking system implementing sophisticated fault tolerance mechanisms to ensure consistency and availability in the face of failures.</p>
+          <div class="row" style="margin-top: 12px;">
+            <span class="tag">Sharding</span>
+            <span class="tag">Paxos</span>
+            <span class="tag">2PC</span>
+            <span class="tag">Distributed Systems</span>
+          </div>
+        </div>
+
+        <div class="card project">
+          <div class="title">
+            <h4>Verified Multi-Paxos in Rust/Verus</h4>
+          </div>
+          <p class="muted">A formally verified implementation of Multi-Paxos consensus algorithm with machine-checked proofs of safety and liveness properties.</p>
+          <div class="row" style="margin-top: 12px;">
+            <span class="tag">Rust</span>
+            <span class="tag">Verus</span>
+            <span class="tag">Formal Verification</span>
+            <span class="tag">Consensus</span>
+          </div>
+        </div>
+
+        <div class="card project">
+          <div class="title">
+            <h4>Distributed Key-Value Store</h4>
+          </div>
+          <p class="muted">High-performance distributed key-value store with replication, partitioning, and strong consistency guarantees.</p>
+          <div class="row" style="margin-top: 12px;">
+            <span class="tag">Go</span>
+            <span class="tag">Raft</span>
+            <span class="tag">Consistency</span>
+          </div>
+        </div>
+
+        <div class="card project">
+          <div class="title">
+            <h4>Blockchain Smart Contract Analyzer</h4>
+          </div>
+          <p class="muted">Static analysis tool for detecting vulnerabilities and security issues in Ethereum smart contracts.</p>
+          <div class="row" style="margin-top: 12px;">
+            <span class="tag">Solidity</span>
+            <span class="tag">Security</span>
+            <span class="tag">Static Analysis</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <span class="anchor" id="skills"></span>
+    <section class="section">
+      <h3>🛠️ Technical Skills</h3>
+      <div class="grid cols-3">
+        <div class="card">
+          <h4 style="margin: 0 0 12px 0;">Languages</h4>
+          <div class="row">
+            <span class="tag">Rust</span>
+            <span class="tag">Go</span>
+            <span class="tag">Python</span>
+            <span class="tag">Java</span>
+            <span class="tag">C++</span>
+            <span class="tag">JavaScript</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h4 style="margin: 0 0 12px 0;">Distributed Systems</h4>
+          <div class="row">
+            <span class="tag">Paxos</span>
+            <span class="tag">Raft</span>
+            <span class="tag">2PC</span>
+            <span class="tag">Sharding</span>
+            <span class="tag">Replication</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h4 style="margin: 0 0 12px 0;">Tools & Frameworks</h4>
+          <div class="row">
+            <span class="tag">Verus</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Kubernetes</span>
+            <span class="tag">gRPC</span>
+            <span class="tag">Git</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education & Experience -->
+    <section class="section">
+      <h3>🎓 Education & Experience</h3>
+      <div class="card">
+        <div class="timeline">
+          <div class="tl">
+            <h4 style="margin: 0;">M.S. Computer Science</h4>
+            <p class="muted" style="margin: 4px 0;">Stony Brook University</p>
+            <p class="muted" style="margin: 0; font-size: 14px;">Focus: Distributed Systems, Formal Verification</p>
+          </div>
+          <div class="tl">
+            <h4 style="margin: 0;">Research & Projects</h4>
+            <p class="muted" style="margin: 4px 0;">Building fault-tolerant distributed systems</p>
+            <p class="muted" style="margin: 0; font-size: 14px;">Formal verification of consensus protocols</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <span class="anchor" id="contact"></span>
+    <section class="section">
+      <h3>📫 Let's Connect</h3>
+      <div class="card">
+        <p>I'm always excited to discuss distributed systems, formal verification, or potential collaboration opportunities. Feel free to reach out!</p>
+        <div class="row social" style="margin-top: 20px;">
+          <a href="mailto:saikiranreddy2710@gmail.com" class="btn">
+            <span>✉️</span>
+            <span>Email</span>
+          </a>
+          <a href="https://www.linkedin.com/in/saikiranreddyj" target="_blank" rel="noopener" class="btn">
+            <span>💼</span>
+            <span>LinkedIn</span>
+          </a>
+          <a href="https://github.com/saikiranreddy2710" target="_blank" rel="noopener" class="btn">
+            <span>💻</span>
+            <span>GitHub</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p style="text-align: center;">© <span id="year">2024</span> Saikiran Reddy J. Built with passion for distributed systems.</p>
+    </footer>
+  </div>
+
+  <script src="assets/app.js"></script>
 </body>
 </html>
