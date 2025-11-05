@@ -273,7 +273,7 @@ footer{padding:40px 0;color:var(--muted)}
 .float1{top:14vh;left:4vw}
 .float2{bottom:10vh;right:6vw}
 
-@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes spin{to{transform:rotate(1turn)}}
 @media (prefers-reduced-motion: reduce){
   *{transition:none !important;animation:none !important}
 }
@@ -284,3 +284,22 @@ footer{padding:40px 0;color:var(--muted)}
 
 /* Magnetic button helper */
 .magnetic{--tx:0px;--ty:0px;transform:translate(var(--tx), var(--ty));transition:transform .25s ease}
+
+/* Utility classes for spacing */
+.mt-12{margin-top:12px}
+.mt-16{margin-top:16px}
+.mt-20{margin-top:20px}
+.mt-24{margin-top:24px}
+.m-0{margin:0}
+.mb-12{margin-bottom:12px}
+.mb-16{margin-bottom:16px}
+.mt-4{margin-top:4px}
+
+/* Utility classes for display */
+.flex{display:flex}
+.justify-center{justify-content:center}
+.align-center{align-items:center}
+.text-center{text-align:center}
+
+/* Utility classes for text */
+.text-sm{font-size:14px}
