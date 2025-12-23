@@ -1,7 +1,6 @@
 "use client"
 
 import { GlassCard } from "@/components/ui/glass-card"
-import Image from "next/image"
 
 export default function Projects() {
   const projects = [
