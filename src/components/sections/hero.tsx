@@ -20,7 +20,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight whitespace-nowrap"
           >
-            <span className="text-white">Hi, I'm </span>
+            <span className="text-white">Hi, I&apos;m </span>
             <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
               Saikiran Reddy Jakka
             </span>

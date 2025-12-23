@@ -73,7 +73,7 @@ export default function Contact() {
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full" />
           <p className="text-white/70 mt-6 max-w-2xl mx-auto">
-            Interested in collaboration or have questions about my research? Feel free to reach out. I'm always open to discussing distributed systems, machine learning, and backend engineering opportunities.
+            Interested in collaboration or have questions about my research? Feel free to reach out. I&apos;m always open to discussing distributed systems, machine learning, and backend engineering opportunities.
           </p>
         </div>
 

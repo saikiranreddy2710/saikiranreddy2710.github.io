@@ -37,19 +37,19 @@ export default function About() {
               </h3>
               <div className="space-y-4 text-white/80 leading-relaxed">
                 <p>
-                  I'm a graduate student at Stony Brook University pursuing my Master's in Computer Science, 
+                  I&apos;m a graduate student at Stony Brook University pursuing my Master&apos;s in Computer Science, 
                   specializing in distributed systems and machine learning. My research focuses on building 
                   fault-tolerant distributed systems using consensus algorithms like Paxos and PBFT.
                 </p>
                 <p>
-                  Currently working as a Machine Learning Research Assistant, I'm developing smart warehouse 
+                  Currently working as a Machine Learning Research Assistant, I&apos;m developing smart warehouse 
                   optimization systems using Ergo AI and ML models. With expertise in Python, Rust, Go, and 
                   C++, I build scalable backend systems that handle high-throughput transactions while 
                   maintaining consistency and reliability.
                 </p>
                 <p>
                   My experience spans from implementing distributed transaction processing systems to 
-                  building ML-driven applications with GitOps-based deployments. I'm passionate about 
+                  building ML-driven applications with GitOps-based deployments. I&apos;m passionate about 
                   solving complex systems challenges and applying data-driven approaches to real-world problems.
                 </p>
               </div>

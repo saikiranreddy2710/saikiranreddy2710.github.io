@@ -1,7 +1,7 @@
 "use client"
 
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
-import { useState, useEffect } from "react"
+import { motion, useMotionValue, useSpring } from "framer-motion"
+import { useState } from "react"
 
 interface AnimatedNavProps {
   items: Array<{ id: string; label: string }>
@@ -18,13 +18,6 @@ export function AnimatedNav({ items, activeSection, onItemClick }: AnimatedNavPr
   const springConfig = { damping: 25, stiffness: 300 }
   const x = useSpring(mouseX, springConfig)
   const y = useSpring(mouseY, springConfig)
-
-  // Transform for glow effect
-  const glowOpacity = useTransform(
-    mouseX,
-    [-100, 0, 100],
-    [0, 0.5, 0]
-  )
 
   const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const rect = e.currentTarget.getBoundingClientRect()

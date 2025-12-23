@@ -1,4 +1,4 @@
-import { Variants, Transition } from "framer-motion"
+import { Variants } from "framer-motion"
 
 /**
  * Spring Configuration Presets
@@ -286,7 +286,7 @@ export const glowPulse: Variants = {
  * Magnetic Hover Effect
  * Elements follow cursor on hover
  */
-export const magneticHover = (strength: number = 0.2) => ({
+export const magneticHover = () => ({
   whileHover: {
     scale: 1.05,
     transition: springPresets.responsive
