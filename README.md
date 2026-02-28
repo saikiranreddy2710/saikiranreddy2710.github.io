@@ -133,12 +133,5 @@ To customize the portfolio with your information:
 
 This project is open source and available under the MIT License.
 
-## 👤 Contact
-
-- **Email**: saikiranreddy2710@gmail.com
-- **Phone**: +1 (631) 820 1876
-- **Location**: New York, NY
-
----
 
 Built with ❤️ by Saikiran Reddy Jakka
