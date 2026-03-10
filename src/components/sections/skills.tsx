@@ -1,6 +1,7 @@
 "use client"
 
-import { GlassCard } from "@/components/ui/glass-card"
+import React from "react"
+import { motion } from "framer-motion"
 
 export default function Skills() {
   const skillCategories = [
@@ -36,6 +37,12 @@ export default function Skills() {
     }
   ]
 
+  const additionalTech = [
+    "GitOps", "CI/CD", "Terraform", "Jenkins",
+    "Ansible", "Helm", "Tableau", "Power BI",
+    "ETL Pipelines", "Prometheus", "GCP", "Unix/Linux"
+  ]
+
   const certifications = [
     "Microsoft Azure Certification",
     "ServiceNow Certified Application Developer (CAD)",
@@ -43,24 +50,54 @@ export default function Skills() {
     "IEEE AMATHE 2024 - GitOps Presentation"
   ]
 
+  const containerVariants = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.1 } }
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30, scale: 0.98 },
+    visible: {
+      opacity: 1, y: 0, scale: 1,
+      transition: { type: "spring" as const, stiffness: 120, damping: 20 }
+    }
+  }
+
   return (
-    <section className="py-20 px-4 relative">
+    <section className="py-32 px-4 relative overflow-hidden bg-[#f5f5f7] dark:bg-black font-sf-pro transition-colors duration-700">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-sf-pro font-bold text-white mb-6">
-            Skills & Expertise
+        
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center mb-20 px-4"
+        >
+          <h2 className="text-6xl md:text-7xl font-bold tracking-tight text-[#1d1d1f] dark:text-[#f5f5f7] mb-6 transition-colors duration-700">
+            Skills.
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full" />
-          <p className="text-white/70 mt-6 max-w-2xl mx-auto">
-            A comprehensive toolkit spanning distributed systems, machine learning, and cloud infrastructure for building scalable backend solutions.
+          <p className="text-[#86868b] text-xl md:text-2xl font-medium max-w-2xl mx-auto tracking-tight transition-colors duration-700">
+            A comprehensive toolkit for building scalable systems.
           </p>
-        </div>
+        </motion.div>
 
         {/* Skills Grid */}
-        <div className="grid lg:grid-cols-3 gap-8 mb-16">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid lg:grid-cols-3 gap-6 mb-8"
+        >
           {skillCategories.map((category, categoryIndex) => (
-            <GlassCard key={categoryIndex} variant="default" className="p-8 group">
-              <h3 className="text-xl font-sf-pro font-semibold text-white mb-6 text-center">
+            <motion.div
+              key={categoryIndex}
+              variants={itemVariants}
+              className="p-8 bg-white dark:bg-[#0a0a0a] rounded-[2rem] shadow-[0_4px_24px_rgba(0,0,0,0.04)] dark:shadow-[0_4px_24px_rgba(255,255,255,0.02)] border border-transparent dark:border-white/5 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_8px_32px_rgba(255,255,255,0.05)]"
+            >
+              <h3 className="text-xl font-semibold text-[#1d1d1f] dark:text-[#f5f5f7] mb-6 text-center transition-colors duration-700">
                 {category.title}
               </h3>
               
@@ -68,78 +105,76 @@ export default function Skills() {
                 {category.skills.map((skill, skillIndex) => (
                   <div key={skillIndex} className="space-y-2">
                     <div className="flex justify-between items-center">
-                      <span className="text-white/90 font-medium">{skill.name}</span>
-                      <span className="text-white/60 text-sm">{skill.level}%</span>
+                      <span className="text-[#1d1d1f] dark:text-[#d2d2d7] font-medium text-sm transition-colors duration-700">{skill.name}</span>
+                      <span className="text-[#86868b] text-xs transition-colors duration-700">{skill.level}%</span>
                     </div>
                     
                     {/* Progress Bar */}
-                    <div className="w-full bg-white/10 rounded-full h-2 overflow-hidden">
+                    <div className="w-full bg-black/5 dark:bg-white/10 rounded-full h-1.5 overflow-hidden transition-colors duration-700">
                       <div 
-                        className={`h-full bg-gradient-to-r ${skill.color} rounded-full transition-all duration-1000 ease-out group-hover:scale-x-105 origin-left`}
+                        className={`h-full bg-gradient-to-r ${skill.color} rounded-full transition-all duration-1000 ease-out`}
                         style={{ width: `${skill.level}%` }}
                       />
                     </div>
                   </div>
                 ))}
               </div>
-            </GlassCard>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Additional Skills & Certifications */}
-        <div className="grid md:grid-cols-2 gap-8">
+        {/* Additional Tech & Certifications */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid md:grid-cols-2 gap-6"
+        >
           {/* Additional Technologies */}
-          <GlassCard variant="hover" className="p-8" glow>
-            <h3 className="text-xl font-sf-pro font-semibold text-white mb-6">
+          <motion.div
+            variants={itemVariants}
+            className="p-8 bg-white dark:bg-[#0a0a0a] rounded-[2rem] shadow-[0_4px_24px_rgba(0,0,0,0.04)] dark:shadow-[0_4px_24px_rgba(255,255,255,0.02)] border border-transparent dark:border-white/5 transition-colors duration-700"
+          >
+            <h3 className="text-lg font-semibold text-[#1d1d1f] dark:text-[#f5f5f7] mb-5 transition-colors duration-700">
               Additional Technologies
             </h3>
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                "GitOps",
-                "CI/CD",
-                "Terraform",
-                "Jenkins",
-                "Ansible",
-                "Helm",
-                "Tableau",
-                "Power BI",
-                "ETL Pipelines",
-                "Prometheus",
-                "GCP",
-                "Unix/Linux"
-              ].map((tech, index) => (
-                <GlassCard 
-                  key={index} 
-                  variant="subtle" 
-                  className="p-3 text-center text-sm text-white/80 hover:text-white hover:bg-white/10 transition-all"
+            <div className="flex flex-wrap gap-2">
+              {additionalTech.map((tech, index) => (
+                <span
+                  key={index}
+                  className="px-4 py-2 bg-[#f5f5f7] dark:bg-white/5 text-[#1d1d1f] dark:text-[#d2d2d7] text-sm font-medium rounded-full border border-black/5 dark:border-white/10 transition-colors duration-700 hover:bg-black/5 dark:hover:bg-white/10"
                 >
                   {tech}
-                </GlassCard>
+                </span>
               ))}
             </div>
-          </GlassCard>
+          </motion.div>
 
           {/* Certifications */}
-          <GlassCard variant="hover" className="p-8" glow>
-            <h3 className="text-xl font-sf-pro font-semibold text-white mb-6">
+          <motion.div
+            variants={itemVariants}
+            className="p-8 bg-white dark:bg-[#0a0a0a] rounded-[2rem] shadow-[0_4px_24px_rgba(0,0,0,0.04)] dark:shadow-[0_4px_24px_rgba(255,255,255,0.02)] border border-transparent dark:border-white/5 transition-colors duration-700"
+          >
+            <h3 className="text-lg font-semibold text-[#1d1d1f] dark:text-[#f5f5f7] mb-5 transition-colors duration-700">
               Certifications & Achievements
             </h3>
             <div className="space-y-3">
               {certifications.map((cert, index) => (
                 <div key={index} className="flex items-center space-x-3">
                   <div className="w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full flex-shrink-0" />
-                  <span className="text-white/80">{cert}</span>
+                  <span className="text-[#1d1d1f] dark:text-[#d2d2d7] text-sm transition-colors duration-700">{cert}</span>
                 </div>
               ))}
             </div>
             
-            <div className="mt-6 pt-6 border-t border-white/10">
-              <p className="text-white/60 text-sm italic">
-                Continuously expanding expertise in distributed systems, consensus algorithms, and ML-driven optimization techniques.
+            <div className="mt-6 pt-6 border-t border-black/5 dark:border-white/10 transition-colors duration-700">
+              <p className="text-[#86868b] text-sm italic transition-colors duration-700">
+                Continuously expanding expertise in distributed systems, consensus algorithms, and ML-driven optimization.
               </p>
             </div>
-          </GlassCard>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   )

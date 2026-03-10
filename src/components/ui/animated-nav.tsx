@@ -51,7 +51,7 @@ export function AnimatedNav({ items, activeSection, onItemClick }: AnimatedNavPr
             {isActive && (
               <motion.div
                 layoutId="activeSection"
-                className="absolute inset-0 bg-white/10 rounded-apple"
+                className="absolute inset-0 bg-black/5 dark:bg-white/10 rounded-apple transition-colors duration-700"
                 transition={{
                   type: "spring",
                   stiffness: 380,
@@ -84,7 +84,7 @@ export function AnimatedNav({ items, activeSection, onItemClick }: AnimatedNavPr
             {/* Text */}
             <span
               className={`relative z-10 transition-colors duration-300 ${
-                isActive ? "text-white" : "text-white/70 hover:text-white"
+                isActive ? "text-[#1d1d1f] dark:text-white" : "text-[#86868b] dark:text-white/70 hover:text-[#1d1d1f] dark:hover:text-white"
               }`}
             >
               {item.label}

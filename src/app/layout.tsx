@@ -66,10 +66,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable}`} suppressHydrationWarning>
-      <body className="font-inter antialiased bg-black min-h-screen">
+      <body className="font-inter antialiased bg-[#f5f5f7] dark:bg-black min-h-screen transition-colors duration-700">
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="system"
           enableSystem
           disableTransitionOnChange={false}
         >

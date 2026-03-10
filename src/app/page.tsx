@@ -42,8 +42,8 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen overflow-hidden">
-      {/* Animated Background Gradient Mesh */}
-      <div className="fixed inset-0 pointer-events-none">
+      {/* Animated Background Gradient Mesh - only visible in dark mode */}
+      <div className="fixed inset-0 pointer-events-none hidden dark:block">
         <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/20 rounded-full filter blur-3xl" />
         <div className="absolute top-1/4 right-0 w-80 h-80 bg-purple-500/20 rounded-full filter blur-3xl" />
         <div className="absolute bottom-0 left-1/3 w-72 h-72 bg-pink-500/20 rounded-full filter blur-3xl" />
@@ -57,7 +57,7 @@ export default function Home() {
             initial={{ y: -100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="bg-gray-900/90 backdrop-blur-2xl border border-gray-700/50 rounded-full px-10 py-4 shadow-2xl"
+            className="bg-white/80 dark:bg-gray-900/90 backdrop-blur-2xl border border-black/5 dark:border-gray-700/50 rounded-full px-10 py-4 shadow-[0_4px_20px_rgba(0,0,0,0.06)] dark:shadow-2xl transition-colors duration-700"
           >
             <div className="flex items-center gap-10">
               {["home", "about", "skills", "experience", "projects", "contact"].map((section) => (
@@ -69,7 +69,7 @@ export default function Home() {
                     scrollToSection(section)
                   }}
                   className={`text-sm font-medium transition-colors duration-300 capitalize ${
-                    activeSection === section ? "text-white" : "text-gray-400 hover:text-white"
+                    activeSection === section ? "text-[#1d1d1f] dark:text-white" : "text-[#86868b] dark:text-gray-400 hover:text-[#1d1d1f] dark:hover:text-white"
                   }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
