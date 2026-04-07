@@ -197,7 +197,7 @@ export default function Projects() {
   }
 
   return (
-    <section className="py-24 px-4 relative overflow-hidden bg-[#f5f5f7] dark:bg-black transition-colors duration-700">
+    <section className="py-24 px-4 relative overflow-hidden bg-white dark:bg-black transition-colors duration-700">
       <div className="container mx-auto w-full max-w-[1600px]">
         
         <div className="text-center mb-16 px-4">

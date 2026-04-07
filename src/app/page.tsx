@@ -57,7 +57,7 @@ export default function Home() {
             initial={{ y: -100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="bg-white/80 dark:bg-gray-900/90 backdrop-blur-2xl border border-black/5 dark:border-gray-700/50 rounded-full px-10 py-4 shadow-[0_4px_20px_rgba(0,0,0,0.06)] dark:shadow-2xl transition-colors duration-700"
+            className="bg-white/90 dark:bg-black/80 backdrop-blur-3xl border border-black/10 dark:border-white/10 rounded-full px-10 py-4 shadow-[0_0_30px_rgba(0,0,0,0.1)] dark:shadow-[0_0_30px_rgba(255,255,255,0.1)] hover:shadow-[0_0_40px_rgba(0,0,0,0.15)] dark:hover:shadow-[0_0_40px_rgba(255,255,255,0.15)] transition-all duration-700"
           >
             <div className="flex items-center gap-10">
               {["home", "about", "skills", "experience", "projects", "contact"].map((section) => (

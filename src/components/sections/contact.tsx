@@ -2,6 +2,7 @@
 
 import React from "react"
 import { motion } from "framer-motion"
+import AntiGravityCanvas from "@/components/ui/particle-effect"
 
 export default function Contact() {
   const socialLinks = [
@@ -46,12 +47,13 @@ export default function Contact() {
     hidden: { opacity: 0, y: 30, scale: 0.98 },
     visible: {
       opacity: 1, y: 0, scale: 1,
-      transition: { type: "spring", stiffness: 120, damping: 20 }
+      transition: { type: "spring" as const, stiffness: 120, damping: 20 }
     }
   }
 
   return (
-    <section className="py-32 px-4 relative overflow-hidden bg-[#f5f5f7] dark:bg-black font-sf-pro transition-colors duration-700">
+    <section className="py-32 px-4 relative overflow-hidden bg-white dark:bg-black font-sf-pro transition-colors duration-700">
+      <AntiGravityCanvas />
       <div className="container mx-auto max-w-4xl relative z-10">
         
         {/* Header */}
@@ -112,17 +114,17 @@ export default function Contact() {
             Current Status
           </h3>
           <div className="flex flex-wrap gap-4">
-            <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-green-50 dark:bg-green-500/10 transition-colors duration-700">
-              <div className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse" />
-              <span className="text-sm font-medium text-green-700 dark:text-green-400 transition-colors duration-700">Graduate Student at Stony Brook</span>
+            <div className="flex items-center gap-3 px-4 py-2 rounded-full border border-black/5 dark:border-white/10 bg-slate-50 dark:bg-white/5 transition-colors duration-700">
+              <div className="w-2.5 h-2.5 bg-slate-400 dark:bg-slate-500 rounded-full animate-pulse" />
+              <span className="text-sm font-medium text-slate-700 dark:text-gray-300 transition-colors duration-700">Graduate Student at Stony Brook</span>
             </div>
-            <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-blue-50 dark:bg-blue-500/10 transition-colors duration-700">
-              <div className="w-2.5 h-2.5 bg-blue-500 rounded-full" />
-              <span className="text-sm font-medium text-blue-700 dark:text-blue-400 transition-colors duration-700">Research Assistant</span>
+            <div className="flex items-center gap-3 px-4 py-2 rounded-full border border-black/5 dark:border-white/10 bg-slate-50 dark:bg-white/5 transition-colors duration-700">
+              <div className="w-2.5 h-2.5 bg-slate-400 dark:bg-slate-500 rounded-full" />
+              <span className="text-sm font-medium text-slate-700 dark:text-gray-300 transition-colors duration-700">Research Assistant</span>
             </div>
-            <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-purple-50 dark:bg-purple-500/10 transition-colors duration-700">
-              <div className="w-2.5 h-2.5 bg-purple-500 rounded-full" />
-              <span className="text-sm font-medium text-purple-700 dark:text-purple-400 transition-colors duration-700">Open to Opportunities</span>
+            <div className="flex items-center gap-3 px-4 py-2 rounded-full border border-black/5 dark:border-white/10 bg-slate-50 dark:bg-white/5 transition-colors duration-700">
+              <div className="w-2.5 h-2.5 bg-slate-400 dark:bg-slate-500 rounded-full" />
+              <span className="text-sm font-medium text-slate-700 dark:text-gray-300 transition-colors duration-700">Open to Opportunities</span>
             </div>
           </div>
         </motion.div>

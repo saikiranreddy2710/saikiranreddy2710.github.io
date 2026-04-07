@@ -1,33 +1,41 @@
 "use client"
 
-import React, { Suspense } from "react"
+import React from "react"
 import { motion } from "framer-motion"
 import { useTheme } from "next-themes"
+import { FloatingPaths } from "@/components/ui/background-paths"
 
 export default function Hero() {
   const { resolvedTheme } = useTheme()
   const isDark = resolvedTheme === "dark"
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center px-4 py-20 relative bg-[#f5f5f7] dark:bg-black transition-colors duration-700 overflow-hidden">
+    <section className="min-h-screen flex flex-col items-center justify-center px-4 py-20 relative bg-white dark:bg-black transition-colors duration-700 overflow-hidden">
       
+      {/* Dynamic Background Paths */}
+      <div className="absolute inset-0 z-0">
+        <FloatingPaths position={1} />
+        <FloatingPaths position={-1} />
+      </div>
+
       <div className="container mx-auto max-w-6xl relative z-10">
-        {/* Main Content - Centered */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center space-y-6 mb-16"
+          className="text-center space-y-6 mb-16 flex flex-col items-center"
         >
-          {/* Hero Text with Gradient Name */}
+          {/* Hero Text */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight whitespace-nowrap"
+            className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tighter"
           >
-            <span className="text-[#1d1d1f] dark:text-white transition-colors duration-700">Hi, I&apos;m </span>
-            <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+            <span className="text-slate-900 dark:text-white transition-colors duration-700">
+              Hi, I&apos;m{" "}
+            </span>
+            <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 to-neutral-500 dark:from-white dark:to-white/70">
               Saikiran Reddy Jakka
             </span>
           </motion.h1>
@@ -37,9 +45,9 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-2xl md:text-3xl lg:text-4xl text-[#86868b] dark:text-gray-300 font-medium transition-colors duration-700"
+            className="text-2xl md:text-3xl lg:text-4xl text-[#86868b] dark:text-gray-300 font-medium transition-colors duration-700 tracking-tight"
           >
-            MS Computer Science • Backend Engineer &amp; ML Researcher
+            Software Engineer
           </motion.p>
 
           {/* Description */}
@@ -47,30 +55,49 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-base md:text-lg text-[#86868b] dark:text-gray-400 max-w-4xl mx-auto leading-relaxed transition-colors duration-700"
+            className="text-base md:text-lg text-slate-600 dark:text-gray-400 max-w-4xl mx-auto leading-relaxed transition-colors duration-700"
           >
-            Graduate student at Stony Brook University specializing in distributed systems and machine learning. Building scalable backend systems with{" "}
-            <span className="text-blue-600 dark:text-blue-400 font-medium transition-colors duration-700">Paxos &amp; PBFT consensus algorithms</span>,{" "}
-            <span className="text-purple-600 dark:text-purple-400 font-medium transition-colors duration-700">Go &amp; Rust</span>, and developing{" "}
-            <span className="text-red-600 dark:text-red-500 font-medium transition-colors duration-700">ML-driven warehouse optimization systems</span>.
+            MS Computer Science graduate student at Stony Brook University. Interested in working with{" "}
+            <span className="text-slate-900 dark:text-white font-medium transition-colors duration-700">scalable backend systems</span>,{" "}
+            <span className="text-slate-900 dark:text-white font-medium transition-colors duration-700">advanced machine learning</span>, and building innovative{" "}
+            <span className="text-slate-900 dark:text-white font-medium transition-colors duration-700">AI-driven applications</span>.
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* Status Indicator */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="flex items-center justify-center pt-2 pb-2"
+          >
+            <span className="text-[15px] font-bold text-slate-900 dark:text-white tracking-wider uppercase text-sm">
+              Currently available for software engineering roles
+            </span>
+          </motion.div>
+
+          {/* Premium Glassmorphic CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4"
           >
-            <a
-              href="#projects"
-              className="px-8 py-3 bg-[#1d1d1f] dark:bg-blue-600 hover:bg-black dark:hover:bg-blue-700 text-white font-medium rounded-full transition-all duration-300 w-full sm:w-auto text-center shadow-sm hover:shadow-md"
-            >
-              View My Work
-            </a>
+            {/* Discover Button styled like 21st.dev Premium Component */}
+            <div className="inline-block group relative bg-gradient-to-b from-black/10 to-white/10 dark:from-white/10 dark:to-black/10 p-px rounded-xl backdrop-blur-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 w-full sm:w-auto">
+              <a
+                href="#projects"
+                className="flex items-center justify-center rounded-[0.7rem] px-5 py-2 text-sm font-semibold backdrop-blur-md bg-white/95 hover:bg-white/100 dark:bg-black/95 dark:hover:bg-black/100 text-black dark:text-white transition-all duration-300 group-hover:-translate-y-0.5 border border-black/10 dark:border-white/10 hover:shadow-md dark:hover:shadow-neutral-800/50"
+              >
+                <span className="opacity-90 group-hover:opacity-100 transition-opacity">
+                    View My Work
+                </span>
+              </a>
+            </div>
+
+            {/* Secondary CTA */}
             <a
               href="#contact"
-              className="px-8 py-3 bg-white/80 dark:bg-gray-800 hover:bg-white dark:hover:bg-gray-700 text-[#1d1d1f] dark:text-white font-medium rounded-full transition-all duration-300 w-full sm:w-auto text-center border border-black/10 dark:border-gray-700 shadow-sm backdrop-blur-sm"
+              className="px-5 py-2 bg-transparent text-slate-700 dark:text-white text-sm font-medium rounded-xl transition-all duration-300 w-full sm:w-auto text-center border-2 border-slate-200 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/5 backdrop-blur-sm"
             >
               Get In Touch
             </a>
@@ -81,20 +108,13 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
-            className="flex flex-wrap gap-3 justify-center items-center pt-8"
+            className="flex flex-wrap gap-3 justify-center items-center pt-10"
           >
-            <span className="px-4 py-2 bg-blue-500/10 border border-blue-500/20 dark:border-blue-500/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium transition-colors duration-700 backdrop-blur-sm">
-              Distributed Systems
-            </span>
-            <span className="px-4 py-2 bg-purple-500/10 border border-purple-500/20 dark:border-purple-500/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium transition-colors duration-700 backdrop-blur-sm">
-              Machine Learning
-            </span>
-            <span className="px-4 py-2 bg-green-500/10 border border-green-500/20 dark:border-green-500/30 text-green-700 dark:text-green-300 rounded-full text-sm font-medium transition-colors duration-700 backdrop-blur-sm">
-              Backend Engineering
-            </span>
-            <span className="px-4 py-2 bg-orange-500/10 border border-orange-500/20 dark:border-orange-500/30 text-orange-700 dark:text-orange-300 rounded-full text-sm font-medium transition-colors duration-700 backdrop-blur-sm">
-              Cloud Infrastructure
-            </span>
+            {["Distributed Systems", "Machine Learning", "Backend Engineering", "Cloud Infrastructure"].map((tag) => (
+               <span key={tag} className="px-4 py-2 bg-slate-100/50 border border-slate-200/50 dark:bg-white/5 dark:border-white/10 text-slate-700 dark:text-white rounded-full text-sm font-medium transition-colors duration-700 backdrop-blur-md">
+                 {tag}
+               </span>
+            ))}
           </motion.div>
         </motion.div>
       </div>
@@ -110,11 +130,12 @@ export default function Hero() {
           <motion.a
             key={section}
             href={`#${section}`}
-            className="w-2 h-2 rounded-full bg-black/20 dark:bg-gray-600 hover:bg-blue-500 dark:hover:bg-blue-500 transition-all duration-300"
+            className="w-2 h-2 rounded-full bg-black/20 dark:bg-gray-600 hover:bg-slate-900 dark:hover:bg-white transition-all duration-300"
             whileHover={{ scale: 1.5 }}
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.4, delay: 1.5 + index * 0.1 }}
+            aria-label={`Scroll to ${section}`}
           />
         ))}
       </motion.div>

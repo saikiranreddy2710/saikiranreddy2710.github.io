@@ -2,6 +2,7 @@
 
 import React from "react"
 import { motion } from "framer-motion"
+import AntiGravityCanvas from "@/components/ui/particle-effect"
 
 /* ─── Data ─── */
 const researchInterests = [
@@ -43,9 +44,10 @@ const sectionDelay = 0.15
 
 export default function About() {
   return (
-    <section className="py-32 px-4 relative overflow-hidden bg-[#f5f5f7] dark:bg-black transition-colors duration-700">
-      <div className="container mx-auto max-w-6xl relative z-10">
-        
+    <section className="py-32 px-4 relative overflow-hidden bg-white dark:bg-black transition-colors duration-700">
+      <AntiGravityCanvas />
+      <div className="container mx-auto max-w-6xl relative z-10 pointer-events-none">
+
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -61,10 +63,10 @@ export default function About() {
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
-          
+
           {/* Left Column: Bio & Education */}
           <div className="lg:col-span-7 space-y-16">
-            
+
             {/* Bio */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -110,7 +112,7 @@ export default function About() {
                   >
                     {/* Node indicator */}
                     <div className="absolute -left-[31px] lg:-left-[39px] top-1.5 w-3 h-3 rounded-full bg-[#1d1d1f] dark:bg-white border-4 border-[#f5f5f7] dark:border-black transition-colors duration-700" />
-                    
+
                     <h4 className="text-xl font-semibold text-[#1d1d1f] dark:text-[#f5f5f7] tracking-tight transition-colors duration-700">
                       {edu.degree}
                     </h4>
@@ -141,7 +143,7 @@ export default function About() {
               <h3 className="text-sm font-semibold tracking-wider uppercase text-[#86868b] mb-8">
                 Research Focus
               </h3>
-              
+
               <div className="space-y-10 group">
                 {researchInterests.map((item, idx) => (
                   <motion.div
@@ -162,28 +164,7 @@ export default function About() {
                 ))}
               </div>
 
-              {/* Minimalistic Certification List */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6, ease, delay: sectionDelay * 3 }}
-                className="mt-16 pt-10 border-t border-black/10 dark:border-white/10"
-              >
-                <h3 className="text-sm font-semibold tracking-wider uppercase text-[#86868b] mb-6">
-                  Certifications
-                </h3>
-                <ul className="space-y-3">
-                  {['Microsoft Azure Certified', 'ServiceNow Certified Application Developer (CAD)', 'ServiceNow Certified System Administrator (CSA)'].map((cert, idx) => (
-                    <li key={idx} className="text-[15px] text-[#1d1d1f]/80 dark:text-[#d2d2d7] font-medium transition-colors duration-700 flex items-start gap-3">
-                      <span className="text-blue-500 mt-1.5 flex-shrink-0">
-                        <div className="w-1.5 h-1.5 rounded-full bg-current" />
-                      </span>
-                      {cert}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
+
 
             </motion.div>
           </div>
