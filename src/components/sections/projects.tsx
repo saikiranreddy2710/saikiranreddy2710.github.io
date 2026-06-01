@@ -48,8 +48,8 @@ export default function Projects() {
       status: "Completed",
     },
     {
-      title: "NexusDB: Distributed MYSQL Database Systems",
-      description: "Architected a distributed SQL database in Rust with an LSM-tree KV engine, SageTree, MVCC, and a custom SQL stack, supporting ACID transactions and scalable query execution handling ~150K rows/sec.",
+      title: "MotionDB: Distributed MYSQL Database Systems",
+      description: "Architected a distributed SQL database in Rust with an LSM tree KV engine, SageTree, MVCC, and a custom SQL stack, supporting ACID transactions and scalable query execution handling ~150K rows/sec.",
       gradient: "bg-gradient-to-br from-[#5c4033] via-[#4a3428] to-[#3d2b21] dark:from-[#2e1d13] dark:via-[#1c120c] dark:to-[#0e0906]",
       glowColor: "shadow-[inset_0_0_80px_rgba(92,64,51,0.2)] dark:shadow-[inset_0_0_80px_rgba(249,115,22,0.08)]",
       institution: "Stony Brook University",
