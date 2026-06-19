@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: portfolio
-          image: ghcr.io/saikiranreddy2710/saikiranreddy2710.github.io:1.0.0
+          image: ghcr.io/saikiranreddy2710/saikiranreddy2710.github.io:1.0.2
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000
