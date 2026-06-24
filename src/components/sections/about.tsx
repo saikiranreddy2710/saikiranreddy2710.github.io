@@ -25,14 +25,14 @@ const education = [
     degree: "Master of Science in Computer Science",
     institution: "Stony Brook University",
     location: "Stony Brook, NY",
-    date: "Expected May 2026",
-    details: "Coursework: Distributed Systems, Machine Learning, Operating Systems, Advanced Algorithms."
+    date: "Graduated in May 2026",
+    details: "Coursework: Distributed Systems, Machine Learning, Applications of AI, Operating Systems, Advanced Algorithms."
   },
   {
     degree: "Bachelor of Technology in Information Technology",
-    institution: "Chennai Institute of Technology",
+    institution: "Sathyabama Institute of Technology, Sathyabama University",
     location: "Chennai, India",
-    date: "Aug 2019 - May 2023",
+    date: "Aug 2020 - May 2024",
     details: "Graduated with Honors. Focused on Database Management and Core System Design."
   }
 ]
